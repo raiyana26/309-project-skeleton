@@ -32,6 +32,13 @@ module.exports.list = function(req, res) {
     }
   });
 };
+module.exports.view = function(req, res) {
+  
+  res.render('./../public/views/product/view.ejs',{
+    user: req.user  || null,
+    request: req
+  });
+};
 
 module.exports.create = function(req, res) {
   var product = new Product(req.body);

@@ -83,14 +83,15 @@
                 product.quantity = $("#quantity").val();
                 console.log(product);
                  $.ajax({
-                 url:"api/products",
+                 url:"/api/products",
                  method:"post",
                   data: product
-                 }).donr(function(response){
+                 }).done(function(response){
                    console.log(response);
+                   window.location.replace("/products/"+response._id);
                  }).fail(function(response){
                     console.log(response.responseText);
-                    $("error").text(JSON)
+                    $("#error").text(JSON.parse(response.responseText).message);
                  });
             }else{
                 console.log("invalid input");
